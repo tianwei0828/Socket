@@ -20,7 +20,7 @@ socket java module
         socketClient.logName(logName);
         //log是否同名覆盖
         socketClient.isCover(isCover);
-        //设置callback监听
+        //设置String Callback监听
         socketClient.callback(new SocketClient.Callback<String>() {
             @Override
             public void onDataChanged(String data) {
@@ -28,6 +28,19 @@ socket java module
                     return;
                 }
                 //收到从socket读取的数据
+            }
+
+            @Override
+            public void onStatusChanged(int status, String message) {
+                //socket状态和信息
+            }
+        });
+        //设置byte[] Callback监听
+         socketClient.callback(new SocketClient.Callback<byte[]>() {
+
+            @Override
+            public void onDataChanged(byte[] data) {
+               //收到从socket读取的数据
             }
 
             @Override
