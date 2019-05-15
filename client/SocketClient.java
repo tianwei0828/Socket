@@ -310,8 +310,8 @@ public final class SocketClient {
             Log.i(TAG, "ReadThread reading");
             String callbackTypeName = getCallbackTypeName(callback);
             Log.i(TAG, "ReadThread callbackTypeName: " + callbackTypeName);
-            if (Byte.class.getSimpleName().equals(callbackTypeName)) {
-                byteRead();
+            if (byte[].class.getSimpleName().equals(callbackTypeName)) {
+                bytesRead();
             } else if (String.class.getSimpleName().equals(callbackTypeName)) {
                 stringRead();
             }
@@ -319,7 +319,7 @@ public final class SocketClient {
     }
 
 
-    private void byteRead() {
+    private void bytesRead() {
         int len = 0;
         byte[] buffer = new byte[4 * 1024];
         while (connected.get()) {
